@@ -5,7 +5,7 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
-local servers = { "html", "cssls", "gopls" }
+local servers = { "html", "cssls", "gopls", "clangd" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
@@ -31,7 +31,7 @@ lspconfig.gopls.setup {
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
-      userPlaceholders = true,
+      usePlaceholders = true,
       analyses = {
         unusedparams = true,
       },
@@ -39,4 +39,10 @@ lspconfig.gopls.setup {
       gofumpt = true,
     },
   },
+}
+lspconfig.clangd.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  cmd = { 'clangd' },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }, -- exclude "proto".
 }

@@ -4,7 +4,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "tokyonight",
+  theme = "tokyodark",
 
   transparency = true,
   -- hl_override = {
@@ -14,12 +14,20 @@ M.base46 = {
 
 }
 M.ui = {
+  cmp = {
+    icons_left = true,
+  },
+
   statusline = {
     theme = "default",         -- 样式选择：default/vscode/vscode_colored/minimal
     separator_style = "block", -- 分隔符样式选择：default/round/block/arrow
     order = nil,
     modules = nil,
   },
+}
+
+M.lsp = {
+  signature = true,
 }
 
 M.term = {
