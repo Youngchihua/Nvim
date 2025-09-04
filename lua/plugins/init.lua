@@ -23,7 +23,8 @@ return {
         "lua-language-server", "stylua",
         "html-lsp", "css-lsp", "prettier",
         "gopls", "golines", "gofumpt",
-        "goimports-reviser", "delve"
+        "goimports-reviser", "delve",
+        "shellcheck", "luacheck"
       },
     },
   },
