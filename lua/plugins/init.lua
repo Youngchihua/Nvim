@@ -11,7 +11,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -49,8 +48,6 @@ return {
     "ray-x/go.nvim",
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
       require("go").setup()
@@ -63,5 +60,10 @@ return {
     "sindrets/diffview.nvim",
     event = "BufRead",
   },
+  {
+    "github/copilot.vim",
+    cmd = { "Copilot", "Copilot status", "Copilot setup", "Copilot enable" },
+  },
   --require('plugins.outline')
+  require("plugins.indent-blankline")
 }

@@ -19,11 +19,12 @@ vim.opt.backup = false
 vim.opt.showcmd = true
 vim.opt.cmdheight = 0
 
+--光标与滚动
 vim.opt.scrolloff = 9
 vim.opt.sidescroll = 9
 
 
-
+--文件自动保存与读取
 vim.o.autowrite = true
 vim.o.autoread = true
 vim.bo.autoread = true

@@ -15,7 +15,7 @@ M.base46 = {
 }
 M.ui = {
   cmp = {
-    icons_left = true,
+    icons = true,
   },
 
   statusline = {
@@ -29,6 +29,8 @@ M.ui = {
 M.lsp = {
   signature = true,
 }
+
+M.nvdash = { load_on_startup = true }
 
 M.term = {
   winopts = { winhl = "Normal:term,WinSeparator:WinSeparator" },
