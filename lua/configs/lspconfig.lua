@@ -27,7 +27,7 @@ lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   -- cmd = {"gopls", "serve"},
-  cmd = { "gopls" },
+  cmd = { 'gopls', '--mode=stdio' },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -44,6 +44,32 @@ lspconfig.gopls.setup {
 lspconfig.clangd.setup {
   capabilities = capabilities,
   on_attach = on_attach,
-  cmd = { 'clangd' },
-  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" }, -- exclude "proto".
+  flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
+  cmd = {
+    'clangd',
+    '--background-index',
+    '--suggest-missing-includes',
+    '--clang-tidy',
+    '--header-insertion=iwyu',
+    '--enable-config',
+    '--offset-encoding=utf-16',
+    '--clang-tidy-checks=-*,llvm-*,clang-analyzer-*',
+    '--cross-file-rename',
+  },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+}
+
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  root_dir = util.root_pattern("Cargo.toml", ".git"),
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        enable = true,
+        command = "clippy",
+      },
+    },
+  },
 }

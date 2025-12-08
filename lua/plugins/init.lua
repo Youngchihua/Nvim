@@ -64,6 +64,11 @@ return {
     "github/copilot.vim",
     cmd = { "Copilot", "Copilot status", "Copilot setup", "Copilot enable" },
   },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
   --require('plugins.outline')
   require("plugins.indent-blankline")
 }
