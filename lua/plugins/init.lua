@@ -7,6 +7,23 @@ return {
     end,
   },
 
+  --   {
+  --   "williamboman/mason.nvim",
+  --   opts = {
+  --     ensure_installed = {
+  --       "lua-language-server", "stylua",
+  --       "html-lsp", "css-lsp", "prettier",
+  --       "gopls", "golines", "gofumpt",
+  --       "goimports-reviser", "delve",
+  --       "shellcheck", "luacheck"
+  --     },
+  --   },
+  --   config = function()
+  --     vim.cmd("LspStart")
+  --   end,
+  -- },
+  { import = "plugins.mason"},
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
@@ -15,25 +32,13 @@ return {
     end,
   },
 
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server", "stylua",
-        "html-lsp", "css-lsp", "prettier",
-        "gopls", "golines", "gofumpt",
-        "goimports-reviser", "delve",
-        "shellcheck", "luacheck"
-      },
-    },
-  },
   -- 提供代码高亮、缩进和折叠等
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
         "vim", "lua", "vimdoc",
-        "html", "css"
+        "html", "css", "go"
       },
     },
   },
@@ -65,5 +70,7 @@ return {
     cmd = { "Copilot", "Copilot status", "Copilot setup", "Copilot enable" },
   },
   --require('plugins.outline')
-  require("plugins.indent-blankline")
+  { import = "plugins.indent-blankline" },
+  { import = "plugins.hop" },
+  -- { import = "plugins.ufo"},
 }

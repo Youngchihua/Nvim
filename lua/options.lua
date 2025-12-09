@@ -9,7 +9,13 @@ vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
-vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 0
+vim.opt.splitbelow = true -- 水平拆分默认向下
+vim.opt.splitright = true -- 垂直拆分默认向右
 
 vim.opt.title = true
 vim.opt.autoindent = true
