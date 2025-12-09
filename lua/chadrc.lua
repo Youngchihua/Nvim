@@ -4,7 +4,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "monekai",
+  theme = "chadracula",
 
   transparency = true,
   -- hl_override = {
