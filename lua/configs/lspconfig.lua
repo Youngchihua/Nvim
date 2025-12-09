@@ -4,26 +4,12 @@ local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
-local servers = { "html", "cssls" }
+local servers = { "gopls", "clangd", "rust_analyzer" }
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-  }
-end
+vim.lsp.enable(servers)
 
--- typescript
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-lspconfig.gopls.setup {
+vim.lsp.config("gopls", {
   on_attach = on_attach,
   capabilities = capabilities,
   -- cmd = {"gopls", "serve"},
@@ -41,7 +27,8 @@ lspconfig.gopls.setup {
     },
   },
 }
-lspconfig.clangd.setup {
+)
+vim.lsp.config("clangd", {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
@@ -58,8 +45,8 @@ lspconfig.clangd.setup {
   },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
 }
-
-lspconfig.rust_analyzer.setup {
+)
+vim.lsp.config("rust_analyzer", {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -73,3 +60,4 @@ lspconfig.rust_analyzer.setup {
     },
   },
 }
+)
